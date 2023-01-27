@@ -1,4 +1,4 @@
-from instr import*
+from instr import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
@@ -7,6 +7,7 @@ class FinalWin(QWidget):
         super().__init__()
         self.set_appear()
         self.unitUI()
+        self.show()
 
     def set_appear(self):
         self.setWindowTitle(txt_title)
@@ -16,14 +17,15 @@ class FinalWin(QWidget):
     def unitUI(self):
         self.index=QLabel(txt_index)
         self.working=QLabel(txt_workheart)
-        self.line=QVBoxLayout()
-        self.index.addWidget(self.line)
-        self.working.addWidget(self.line)
-        self.setLayout(self.line)
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.index, alignment=Qt.AlignCenter)
+        self.layout.addWidget(self.working, alignment=Qt.AlignCenter)
+        self.setLayout(self.layout)
 
 app=QApplication([])
 mw=FinalWin()
 mw.set_appear()
 mw.unitUI()
+mw.show()
 
 app.exec_()
